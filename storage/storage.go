@@ -1,6 +1,9 @@
 package storage
 
-import "time"
+import (
+	"errors"
+	"time"
+)
 
 type Service interface {
 	Save(string, time.Time) (string, error)
@@ -15,3 +18,5 @@ type Item struct {
 	Expires string `json:"expires" redis:"expires"`
 	Visits  int    `json:"visits" redis:"id"`
 }
+
+var ErrNoLink = errors.New("no link")
